@@ -1,10 +1,6 @@
 import "./App.css";
-import NumberedList from "./NumberedList";
-import RegularList from "./RegularList";
-import LargePersonListItem from "./people/LargePersonListItem";
-import SmallPersonListItem from "./people/SmallPersonListItem";
+import Modal from "./Modal";
 import LargeProductListItem from "./products/LargeProductListItem";
-import SmallProductListItem from "./products/SmallProductListItem";
 import { PeopleProps, ProductProps } from "./type";
 
 const people: PeopleProps[] = [
@@ -52,38 +48,9 @@ const products: ProductProps[] = [
 function App() {
   return (
     <>
-      {/*
-        by using this code, we can use the same component to render different types of data
-      more like reusable component
-      */}
-
-      {/*
-        the point of this code is to show that we can make a lot of combinations of components
-        by the time the app grows, we can save a lot of time by using this code
-        */}
-      <RegularList
-        resourceName="person"
-        items={people}
-        itemComponent={SmallPersonListItem}
-      />
-
-      <NumberedList
-        resourceName="person"
-        items={people}
-        itemComponent={LargePersonListItem}
-      />
-
-      <RegularList
-        resourceName="product"
-        items={products}
-        itemComponent={SmallProductListItem}
-      />
-
-      <NumberedList
-        resourceName="product"
-        items={products}
-        itemComponent={LargeProductListItem}
-      />
+      <Modal>
+        <LargeProductListItem product={products[0]} />
+      </Modal>
     </>
   );
 }
